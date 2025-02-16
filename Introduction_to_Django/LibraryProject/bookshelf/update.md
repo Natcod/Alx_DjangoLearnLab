@@ -1,16 +1,11 @@
+from bookshelf.models import Book
 
----
+# Retrieve the book to update
+book_to_update = Book.objects.get(title="1984")
 
-### **d. Delete the Created Book**
+# Update the title
+book_to_update.title = "Nineteen Eighty-Four"
+book_to_update.save()
 
-#### Command:
-```python
-# Retrieve the book to delete
-book_to_delete = Book.objects.get(title="Nineteen Eighty-Four")
-
-# Delete the book
-book_to_delete.delete()
-
-# Confirm deletion by retrieving all books
-books_after_deletion = Book.objects.all()
-print("Books after deletion:", list(books_after_deletion))
+# Print the updated book details, explicitly showing the title
+print(f"Updated Title: {book_to_update.title}, Author: {book_to_update.author}, Publication Year: {book_to_update.publication_year}")
