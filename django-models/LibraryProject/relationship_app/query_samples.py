@@ -46,8 +46,9 @@ def query_librarian_for_library(library_name):
         # Retrieve the Library object
         library = Library.objects.get(name=library_name)
 
-        # Access the librarian via the OneToOneField
-        librarian = library.librarian
+        # Retrieve the librarian using Librarian.objects.get()
+        librarian = Librarian.objects.get(library=library)
+
         print(f"The librarian for {library_name} is {librarian.name}.")
     except Library.DoesNotExist:
         print(f"Library '{library_name}' does not exist.")
