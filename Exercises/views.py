@@ -26,3 +26,13 @@ def dynamic_content_view(request):
     }
 
     return render(request, 'dynamic_content.html', context)
+
+
+
+def home_view(request):
+    context = {
+        'items' : ['item1', 'item2', 'item3'],
+        'current_date': '2025-02-22',
+    }
+
+    return render(request, 'home.html', context)

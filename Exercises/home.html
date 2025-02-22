@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Home Page!</h2>
+    <p>Today's date is: {{ current_date|date:"F j, Y" }}</p>
+    <ul>
+        {% for item in items %}
+            <li>{{ item|upper }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
