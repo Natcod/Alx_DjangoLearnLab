@@ -7,6 +7,10 @@ from django.contrib.auth.views import LogoutView
 urlpatterns = [
     # Function-based view for listing all books
     path('books/', views.list_books, name='list_books'),
+    path('books/edit/<int:book_id>/', edit_book, name='edit_book'),
+    path('books/delete/<int:book_id>/', delete_book, name='delete_book'),
+    path('books/add/', add_book, name='add_book'),
+
 
     # Class-based view for displaying library details
     path('library/<int:pk>/', views.LibraryDetailView.as_view(), name='library_detail'),
