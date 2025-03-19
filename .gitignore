@@ -1,0 +1,33 @@
+# Virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Migrations (optional: if you want to regenerate them)
+payments/migrations/
+
+# Database (if using SQLite)
+db.sqlite3
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+
+# Logs
+logs/
+*.log
+
+# Django secrets (if any)
+.env
+
+# Byte-compiled / compiled files
+*.class
+
+# OS-specific files
+.DS_Store
+Thumbs.db
