@@ -34,6 +34,7 @@ def custom_logout(request):
     logout(request)
     return redirect("login")
 
+# CRUD Views (updated success_url)
 class PostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
@@ -48,26 +49,26 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     template_name = "blog/post_form.html"
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("post_list")  # Unchanged
 
     def form_valid(self, form):
-        form.instance.author = self.request.user  # Set the logged-in user as author
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm
     template_name = "blog/post_form.html"
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("post_list")  # Unchanged
 
     def test_func(self):
         post = self.get_object()
-        return self.request.user == post.author  # Only author can edit
+        return self.request.user == post.author
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     template_name = "blog/post_confirm_delete.html"
-    success_url = reverse_lazy("post_list")
+    success_url = reverse_lazy("post_list")  # Unchanged
 
     def test_func(self):
         post = self.get_object()
