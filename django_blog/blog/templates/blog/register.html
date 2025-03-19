@@ -1,0 +1,17 @@
+<!-- blog/templates/blog/register.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+</head>
+<body>
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <p><a href="{% url 'login' %}">Already have an account? Login here.</a></p>
+</body>
+</html>
