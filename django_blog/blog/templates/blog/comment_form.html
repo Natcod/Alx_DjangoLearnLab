@@ -12,6 +12,6 @@
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
-    <p><a href="{% url 'post_detail' object.post.pk|default:request.resolver_match.kwargs.post_pk %}">Cancel</a></p>
+    <p><a href="{% url 'post_detail' object.post.pk|default:request.resolver_match.kwargs.post_id %}">Cancel</a></p>
 </body>
 </html>
