@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Comment</title>
+    <title>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Comment</title>
     <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
 </head>
 <body>
-    <h1>Edit Comment</h1>
+    <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Comment</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
-    <p><a href="{% url 'post_detail' object.post.pk %}">Cancel</a></p>
+    <p><a href="{% url 'post_detail' object.post.pk|default:request.resolver_match.kwargs.post_pk %}">Cancel</a></p>
 </body>
 </html>
