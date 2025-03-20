@@ -4,6 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post, Comment
 
+class TagWidget(forms.TextInput):
+    """Custom widget for entering tags as a comma-separated string."""
+    def __init__(self, attrs=None):
+        default_attrs = {"placeholder": "e.g., python, django, tutorial"}
+        if attrs:
+            default_attrs.update(attrs)
+        super().__init__(attrs=default_attrs)
+
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True, help_text="Required. Enter a valid email address.")
     class Meta:
@@ -21,7 +29,7 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ["title", "content", "tags"]
         widgets = {
-            "tags": forms.TextInput(attrs={"placeholder": "e.g., python, django, tutorial"}),
+            "tags": TagWidget(),  # Use the custom TagWidget
         }
 
 class CommentForm(forms.ModelForm):
